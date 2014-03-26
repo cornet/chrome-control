@@ -1,0 +1,35 @@
+<div class="row">
+  <% @browsers.each_index do |id| %>
+    <div class="col-md-6">
+      <dl>
+        <dt>Title</dt>
+        <dd id="title<%= id %>"><%= @browsers[id].title[0..50] %></dd>
+        <dt>URL</dt>
+        <dd id"=url<%= id %>"><%= @browsers[id].url[0..50] %></dd>
+      </dl>
+
+      <div class="thumbnail">
+        <div class="text-center fill">
+          <img id="screenshot<%= id %>" width="300" height="200" src="/1x1.png">
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        setTimeout("getScreenshot(<%= id %>)", 5000);
+      </script>
+
+      <div class="form-group">
+        <input type="url" class="form-control" name="url" id="url<%= id %>" placeholder="Enter URL">
+      </div>
+      <button id="navigate<%= id %>"name="navigate" type="button" class="btn btn-default">Go</button>
+      <button id="reload<%= id %>"name="reload" type="button" class="btn btn-default">Reload</button>
+
+      <script type="text/javascript">
+        $("#reload<%= id %>").click(function() {
+          reloadBrowser(<%= id %>);
+        });
+      </script>
+
+    </div>
+  <% end %>
+</div>

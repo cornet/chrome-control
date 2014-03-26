@@ -1,0 +1,14 @@
+<img id="screenshot" width="200" height="200" src="/1x1.png" />
+
+<script type="text/javascript">
+  function updateScreenshot(data) {
+    document.getElementById("screenshot").src = "data:image/png;base64," + data;
+  };
+
+  function getScreenshot() {
+    jQuery.get('/screenshot','', updateScreenshot);
+  };
+
+  setTimeout(getScreenshot, 5000);
+
+</script>
